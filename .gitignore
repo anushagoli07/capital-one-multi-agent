@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Models & Data
+**/*.faiss
+**/*.pkl
+**/*.bin
+**/*.pt
+**/*.pth
+data/financial_products.json (don't ignore this)
+
+# Large Model Files
+!data/financial_products.json
+model_cache/
+huggingface_cache/
+
+# Logs & Metrics
+*.log
+deploy_log.txt
+eval/eval_results.json
+mlruns/
+.mlflow/
+
+# OS
+.DS_Store
+Thumbs.db

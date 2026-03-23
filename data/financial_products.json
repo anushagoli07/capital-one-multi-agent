@@ -1,0 +1,42 @@
+[
+    {
+        "id": "cc_venture_x",
+        "name": "Capital One Venture X",
+        "type": "Credit Card",
+        "category": "Travel",
+        "description": "Premium travel card with 2x miles on all purchases, $300 annual travel credit, and 10k bonus miles every anniversary. Best for frequent travelers looking for luxury perks.",
+        "apr": "19.99% - 29.99%",
+        "annual_fee": "$395",
+        "benefits": ["Lounge access", "Global Entry credit", "Hertz President's Circle"]
+    },
+    {
+        "id": "cc_savor_one",
+        "name": "Capital One SavorOne",
+        "type": "Credit Card",
+        "category": "Dining & Entertainment",
+        "description": "No annual fee card with 3% cash back on dining, entertainment, popular streaming services, and at grocery stores. Best for foodies and entertainment lovers.",
+        "apr": "19.74% - 29.74%",
+        "annual_fee": "$0",
+        "benefits": ["No foreign transaction fees", "Travel accident insurance"]
+    },
+    {
+        "id": "cc_quicksilver",
+        "name": "Capital One Quicksilver",
+        "type": "Credit Card",
+        "category": "Cash Back",
+        "description": "Simple 1.5% cash back on every purchase, every day. No annual fee. Best for those who want straightforward rewards without tracking categories.",
+        "apr": "19.74% - 29.74%",
+        "annual_fee": "$0",
+        "benefits": ["$0 Fraud Liability", "Concierge service"]
+    },
+    {
+        "id": "cc_platinum",
+        "name": "Capital One Platinum",
+        "type": "Credit Card",
+        "category": "Building Credit",
+        "description": "A straightforward card to help you build your credit. No annual fee and no hidden fees. Best for those starting their credit journey.",
+        "apr": "29.99%",
+        "annual_fee": "$0",
+        "benefits": ["Credit line increase reviews", "Personalized alerts"]
+    }
+]
