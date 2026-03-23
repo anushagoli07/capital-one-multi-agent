@@ -20,7 +20,10 @@ class QueryRequest(BaseModel):
     question: str
     thread_id: str = "default_thread"
 
+from sdk.monitor import monitor
+
 @app.post("/query")
+@monitor.log_trace
 async def query_assistant(request: QueryRequest):
     """
     LangGraph-based query endpoint with ReAct and Agentic workflows.

@@ -44,12 +44,23 @@ def deploy():
     
     # 2. Authenticate Docker to ECR
     print("[*] Authenticating Docker with ECR...")
-    login_cmd = f"aws ecr get-login-password --region {REGION} | docker login --username AWS --password-stdin {account_id}.dkr.ecr.{REGION}.amazonaws.com"
     try:
+        # Get ECR auth token via boto3 instead of AWS CLI
+        auth_response = ecr.get_authorization_token()
+        auth_data = auth_response['authorizationData'][0]
+        token = auth_data['authorizationToken']
+        import base64
+        # Decode token (format is AWS:password)
+        decoded_token = base64.b64decode(token).decode('utf-8')
+        password = decoded_token.split(':')[1]
+        
+        # Run docker login
+        login_cmd = f"docker login --username AWS --password {password} {auth_data['proxyEndpoint']}"
         execute_cmd(login_cmd)
         print("[+] Docker authenticated.")
     except Exception as e:
-        print("[-] Docker authentication failed. Ensure Docker Desktop is running and AWS CLI is in PATH.")
+        print(f"[-] Docker authentication failed: {e}")
+        print("[!] Ensure Docker Desktop is running.")
         return
     
     # 3. Build & Push Docker Image
