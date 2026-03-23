@@ -1,51 +1,50 @@
-# 🏦 Capital One AI Assistant (Recruiter Edition)
+# 🏦 Capital One Multi-Agent Financial Assistant
 
-A production-grade, safe, and optimized Retrieval-Augmented Generation (RAG) system designed for personal finance intelligence. This project demonstrates expertise in LLMs, MLOps, Governance, and AWS deployment, specifically tailored for the high standards of a **Senior Machine Learning Engineer** role at Capital One.
+An enterprise-grade, agentic RAG assistant designed to analyze financial documents and provide safe, explainable answers.
 
 ## 🚀 Key Features
+- **Multi-Agent Architecture**: Uses `LangGraph` to orchestrate a **Planner Agent**, a **Reasoning Agent** (with FAISS search), and a **Guardrail Agent**.
+- **Agentic Workflows**: Decisions are made dynamically based on user intent.
+- **Security & Safety**: Integrated PII detection and Nemo Guardrails for hallucination prevention.
+- **Trace Visualization**: Real-time "thought process" logs visible in the Streamlit UI.
+- **Monitoring**: Out-of-the-box integration with the [AI Deployment Debugger](https://github.com/anushagoli07/ai-deployment-debugger).
 
-- **Local LLM Optimization**: Uses `microsoft/phi-2` quantized to 4-bit with `bitsandbytes` for high-performance inference on consumer hardware.
-- **NeMo Guardrails**: Integrated safety layer for topic enforcement and financial query validation.
-- **Advanced Governance**: Real-time PII redaction and policy-based query filtering.
-- **High-Impact MLOps**: Experiment tracking with MLflow, covering Latency, Throughput, Cost, and Safety metrics.
-- **Explainable RAG**: Source-attribution and transparency in product recommendations.
-- **RAGAS Evaluation**: Automated quality scoring for Faithfulness and Relevancy.
+## 🛠️ Tech Stack
+- **Framework**: LangGraph, FastAPI, Streamlit
+- **LLM**: OpenAI GPT-4o-mini
+- **Vector DB**: FAISS
+- **Security**: Nemo Guardrails, Presidio
 
-## 🛠️ Architecture & Structure
+## 📦 Installation
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/anushagoli07/capital-one-multi-agent.git
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv .venv
+   source .venv/Scripts/activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Set up `.env`:
+   ```env
+   OPENAI_API_KEY=your_key
+   AWS_ACCESS_KEY_ID=your_id
+   AWS_SECRET_ACCESS_KEY=your_secret
+   ```
 
-```mermaid
-graph TD
-    A[User Query] --> B[Governance Policy: PII Check]
-    B --> C[NeMo Guardrails: Safety Check]
-    C --> D[FAISS Hybrid Search]
-    D --> E[Inference: Quantized Phi-2]
-    E --> F[Explainable UI: Streamlit]
-    E --> G[MLflow: Metrics Tracking]
-    G --> F
-```
+## 🏃 Running the App
+1. **Start Backend**:
+   ```bash
+   uvicorn api.main:app --port 8000
+   ```
+2. **Start Frontend**:
+   ```bash
+   streamlit run ui/streamlit_app.py
+   ```
 
-- `core/`: RAG engine and safety guardrails.
-- `inference/`: Model quantization and optimization logic.
-- `governance/`: PII redaction and data access policies.
-- `mlops/`: Experiment tracking and latency monitoring.
-- `experiments/`: A/B testing framework.
-- `aws/`: SageMaker deployment scripting.
-- `data/`: Curated financial product datasets.
-
-## 📊 Performance Dashboard
-
-The Streamlit UI provides a real-time view of:
-- **Latency**: End-to-end response time.
-- **Throughput**: Requests processed per second.
-- **Cost Efficiency**: Tokens per dollar for the local model.
-- **Quality**: RAGAS accuracy scores.
-- **Safety**: Guardrail trigger rates.
-
-## 🚦 Getting Started
-
-1. **Install Dependencies**: `pip install -r requirements.txt`
-2. **Start Backend**: `uvicorn api.main:app --reload`
-3. **Start Frontend**: `streamlit run ui/streamlit_app.py`
-
-## 🏆 Portfolio Highlight
-This project implements the full lifecycle of a regulated AI product: from **local optimization** and **safe retrieval** to **automated evaluation** and **cloud-ready deployment scripts**.
+## 🛡️ Live Monitoring
+This project is connected to a dedicated **AI Debugger**. Every query you make is tracked for latency, cost, and error classification.
